@@ -1,3 +1,9 @@
+" auto-install vim-plug
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.config/nvim/vim-plug')
 
   Plug 'jonathanfilip/vim-lucius'
@@ -5,6 +11,8 @@ call plug#begin('~/.config/nvim/vim-plug')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'scrooloose/nerdtree'
+  Plug 'tpope/vim-fugitive'
+"  Plug 'jsfaint/gen_tags.vim'
 
 call plug#end()
 
@@ -13,27 +21,32 @@ set termguicolors
 " theme config
 colorscheme lucius
 set background=dark
+
+" git gutter config
 let g:gitgutter_override_sign_column_highlight = 0
 
 " airline config
+let g:airline_theme='base16'
 let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 " nerdtree config
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeShowHidden=1
-let g:NERDTreeQuitOnOpen = 1
 map <C-e> :NERDTreeToggle<CR>
-
-
-" supposed to keep you from opening buffers into nonmodifiable 'explorer' buffers
-let g:miniBufExplModSelTarget = 1
-
+let g:NERDTreeQuitOnOpen = 1
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let NERDTreeMinimalUI=1
 
 " use jj to exit insert mode
 imap jj <Esc>
 " no-plugin quick buffer
-nnoremap <C-b> :NERDTreeClose <CR>:buffers<CR>:b 
+nnoremap <C-b> :NERDTreeClose<CR>:buffers<CR>:b 
+
 set relativenumber             " use relative line numbers
 set number                     " show actual line number of the line we're on
 
