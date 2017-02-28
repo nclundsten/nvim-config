@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/vim-plug')
 
-  Plug 'airblade/vim-gitgutter'
+  Plug 'jonathanfilip/vim-lucius'
   Plug 'iCyMind/NeoSolarized'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -10,8 +10,8 @@ call plug#end()
 
 set termguicolors
 
-" solarized config
-colorscheme NeoSolarized
+" theme config
+colorscheme lucius
 set background=dark
 let g:gitgutter_override_sign_column_highlight = 0
 
