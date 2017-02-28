@@ -26,10 +26,14 @@ let g:NERDTreeQuitOnOpen = 1
 map <C-e> :NERDTreeToggle<CR>
 
 
+" supposed to keep you from opening buffers into nonmodifiable 'explorer' buffers
+let g:miniBufExplModSelTarget = 1
+
+
 " use jj to exit insert mode
 imap jj <Esc>
 " no-plugin quick buffer
-nnoremap <C-b> :buffers<CR>:b 
+nnoremap <C-b> :NERDTreeClose <CR>:buffers<CR>:b 
 set relativenumber             " use relative line numbers
 set number                     " show actual line number of the line we're on
 
